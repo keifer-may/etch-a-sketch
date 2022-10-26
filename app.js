@@ -1,9 +1,36 @@
-const numItems = 75;
+const content = document.querySelector(".content");
 const canvas = document.querySelector(".container");
 const color = "black";
 const instructions = document.querySelector(".instructions");
+// const gridInputAttributes = {
+//   type: "range",
+//   name: "grid",
+//   min: "16",
+//   max: "100",
+//   step: "4",
+//   defaultValue: "16",
+// }
+
+// need to determine how to use input objects to interact with the canvas and the game--
+// fix the gridInput tools so that the uuser can edit the number of pixels in the canvas
+
 
 let drawing = false;
+let numItems = '16';
+
+// function setAttributes(element, attributes) {
+//   Object.keys(attributes).forEach(attr => {
+//     element.setAttribute(attr, attributes[attr]);
+//   });
+// }
+
+
+// let gridDiv = document.createElement('div');
+// let gridInput = document.createElement('input');
+// gridDiv.appendChild(content);
+// gridInput.appendChild(gridDiv);
+
+// setAttributes(gridInput, gridInputAttributes);
 
 
 function createGrid(width) {
@@ -22,7 +49,7 @@ function createGrid(width) {
   }
 }
 
-createGrid(numItems);
+createGrid(parseInt(numItems));
 
 const pixels = canvas.childNodes;
 
@@ -37,9 +64,10 @@ function draw() {
 }
 
 canvas.addEventListener("mousedown", (e) => {
+  instructions.style.visibility = 'hidden';
+  
   drawing = true;
   draw();
-  instructions.style.display = 'none';
 });
 
 canvas.addEventListener("mouseup", (e) => {
