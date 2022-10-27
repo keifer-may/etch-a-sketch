@@ -20,21 +20,28 @@ h1{
   margin: 0;
 }
 
-.content{
-  /* align-self: center;
-  padding: 2%; */
+.middle{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-content: space-evenly;
+  align-items: center;
+  gap: 3rem;
 }
 
 .container{
-  align-self: center;
   height: 500px;
   width: 500px;
   display: grid;
   border: 0.25rem solid black;
 }
 
-.container > * {
-  background-color: rgb(147, 232, 235);
+.content{
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: space-evenly;
+  align-content: space-around;
+  gap: 3.5rem;
 }
 
 .footer-container{
