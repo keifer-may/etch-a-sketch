@@ -6,7 +6,7 @@ const eraseButton = document.querySelector('#erase-grid');
 
 let drawing = false;
 let numPixels = '16';
-const color = "black";
+const defaultColor = "black";
 
 function createGrid(width) {
   for (let i = 0; i < width * width; i++) {
@@ -50,6 +50,9 @@ numPixelsUpdate.addEventListener('click', (e) => {
   else if (parseInt(userPixel) > 100) {
     userPixel = 100;
   }
+  else if (userPixel == '') {
+    userPixel = 16;
+  }
   console.log(userPixel);
   clearGrid();
   createGrid(parseInt(userPixel));
@@ -61,24 +64,21 @@ eraseButton.addEventListener('click', (e) => {
   eraseCanvas();
 })
 
-
 function draw() {
   const pixels = canvas.children;
   [].forEach.call(pixels, (pixel) => {
     pixel.addEventListener("mouseover", (v) => {
       if (drawing == true) {
-        console.log('foreach');
-        pixel.setAttribute("style", `background-color: ${color};`);
-      }});
-    });  
+        pixel.setAttribute("style", `background-color: ${defaultColor};`);
+      }  
+    });
+  });
 };
 
 canvas.addEventListener("mousedown", (e) => {
   instructions.style.visibility = 'hidden';
   drawing = true;
-  console.log(drawing);
   draw();
-  console.log('called function');
 });
 
 canvas.addEventListener("mouseup", (e) => {
